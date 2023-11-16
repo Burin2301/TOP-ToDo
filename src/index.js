@@ -1,6 +1,7 @@
 // IMPORTS------------------------------------------------------------------------------
 import { format } from "date-fns";
 import { printMessage } from "./custom_modules/printMessages"
+import { buttons } from "./modules/forTheMoment";
 // -------------------------------------------------------------------------------------
 
 
@@ -12,7 +13,6 @@ class Project {
         this.descriptionProject = descriptionProject;
     }
 };
-
 class Task {
     constructor( titleTask, descriptionTask, dueDate, priority) {
         this.titleTask = titleTask;
@@ -23,50 +23,67 @@ class Task {
 };
 
 // DEFAULT OBJECTS FOR TESTING -----------------------------------------------------------
-const projectDefault = new Project("Default", "This project has been created automatically");
-const defaultTask = new Task( "Default Task", "This task has been created automatically", "10/11/2023", "low" );
+const projectDefault = new Project("No Project", "Tasks that are not from any project will be here 😀");
+const defaultTask = new Task( "Example Task", "This task has been created automatically", "10/11/2023", "low" );
 
 const projects = [];
 projects.push(projectDefault);
-
 const tasks = []
 tasks.push(defaultTask)
 
 function newProject( ) {
-
-    let projectName = prompt("Please, type a name for the project.");
-    let projectDescr = prompt("Please, type a description for the project, this is optional.");
-
-    if( projectName === '' ) {
-        projectName = prompt("Please, type a name for the project.")
+    let projectName
+    let projectDescr
+    try {
+        projectName = prompt("Please, type a name for the project.");
+        projectDescr = prompt("Please, type a description for the project, this is optional.");
+        if ( projectName === "" ){
+            throw "Please, type a name for the project, please"
+        }
+        const projectCreated = new Project(projectName,projectDescr);
+        projects.push(projectCreated);
+        printMessage.log(projects);
     }
-    const projectCreated = new Project(projectName,projectDescr);
-    projects.push(projectCreated);
-
-    printMessage.log(projects);
-
-    newTask()
-    
+    catch(error){
+        alert("Error: " + error )
+    }
+    console.table(projects)
     return projects;
 }
-
 function newTask( ) {
-    let taskTitle = prompt( "Type a title for the new task" );
-    let taskDescr = prompt( "Type a description for the task" );
-    let taskDate = prompt( "Give a due date for the task" );
-    let taskPrio = prompt( "Give a priority order for this task" );
-
-    if ( taskTitle === "" ) {
+    let taskTitle
+    let taskDescr
+    let taskDate
+    let taskPrio
+    try {
         taskTitle = prompt( "Type a title for the new task" );
-    }else if ( taskDate === "" ) {
+        taskDescr = prompt( "Type a description for the task" );
         taskDate = prompt( "Give a due date for the task" );
+        taskPrio = prompt( "Give a priority order for this task" );
+        if( taskTitle === "" || taskDate === "" ){
+            throw "Please, type a name and a due date for the task, please"
+        }
+        const taskCreated = new Task( taskTitle, taskDescr, taskDate, taskPrio )
+        tasks.push(taskCreated)
+        printMessage.log(tasks)
     }
-
-    const taskCreated = new Task( taskTitle, taskDescr, taskDate, taskPrio )
-    tasks.push(taskCreated)
-    printMessage.log(tasks)
+    catch( error ){
+        alert("Error: " + error )
+    }
+    console.table(tasks)
     return tasks;
-
+}
+function render(){
+    const contentDiv = document.querySelector('.content')
+    contentDiv.appendChild(buttons)
+    console.table(projects)
+    console.table(tasks)
 }
 
-newProject();
+render()
+
+const projectBtn = document.querySelector("#project");
+projectBtn.addEventListener("click", newProject);
+
+const taskBtn = document.querySelector("#task");
+taskBtn.addEventListener("click", newTask)
