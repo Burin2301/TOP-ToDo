@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+}
+html{
+    height: 100vh;
+    width: 100%;
+}
+body{
+    --main: hsla(287, 65%, 40%, 1);
+    --white: hsla(0, 0%, 100%, 1);
+    --text-black: hsla(341, 39%, 14%, 1);
+    --secondary: hsla(199, 100%, 29%, 1);
+    --text-light: rgb(27, 58, 71);
+
+    height: 100vh;
+    width: 100%;
+}
+.content{
+    height: 100vh;
+    width: 100%;
+}
+li{
+    list-style-type: none;
+}
+.inactive{
+    display: none;
+}
+
+/* HEADER------------------------------------------- */
+
+header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    justify-content: space-between;
+    border-radius: 0 0 1.5rem 1.5rem ;
+    box-shadow: 0 5px ;
+    margin-bottom: 5px;
+}
+.header-brand,
+.header-btns{
+    display: flex;
+    align-items: center;
+}
+header img{
+    width: 60px;
+    height: 60px;
+}
+header h1{
+    font-size: 2rem;
+}
+.navbar-button{
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding-top: 3px;
+    margin-right: 2rem;
+    cursor: pointer;
+}.navbar-button:hover{
+    transform: translateY(4px);
+    transition: .4s;
+}
+.burgerBtn{
+    display: none;
+}
+
+/* MAIN--------------------------------------------- */
+
+main{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    padding: 0 1.5rem;
+    align-items: center;
+}
+/* ASIDE ------------------------------------------- */
+
+aside{
+    width: 260px;
+    height: 100vh;
+    background-color: var(--main);
+    padding: 20px 10px;
+    color: white;
+}
+.project-list{
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1.2rem;
+}
+.project-list::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: .05rem;
+    background-color: white;
+}
+
+/* TASKS ------------------------------------------- */
+
+.taskcontainer{
+    width: 100%;
+    height: 100vh;
+}
+
+/* TASK-CONTAINER ---------------------------------- */
+.task-container{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    height: 100vh;
+    padding: 20px 10px;
+}
+.task-Li{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: .5rem;
+}
+.full-task{
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 20px;
+    align-items: center;
+    border: 0.05rem solid var(--main);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.task-info{
+    width: 100%;
+}
+.task-x-btn{
+    width: 40px;
+    height: 40px;
+    border-radius: 15px;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: none;
+    background-color: var(--secondary);
+    margin: 20px 20px 20px 10px;
+}
+
+/* POP UPS------------------------------------- */
+
+
+/* MEDIA QUERY ------------------------------------ */
+
+@media (max-width: 600px){
+    .burgerBtn{
+        display: block;
+    }
+}
+
+/* ----------- */
