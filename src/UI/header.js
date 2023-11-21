@@ -40,18 +40,9 @@ headerBrand.appendChild(headerLogo)
 headerBrand.appendChild(headerTitle)
 header.appendChild(headerBrand)
 
-
-
 headerBtns.appendChild(createProject)
 headerBtns.appendChild(createTask)
 headerBtns.appendChild(burgerMenuButton)
 header.appendChild(headerBtns)
-
-
-
-
-
-
-
 
 export { header }

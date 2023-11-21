@@ -1,6 +1,6 @@
 // IMPORTS----------------
-import { projects } from "../functions/projects"
-import { tasks } from "../functions/tasks"
+import { projects } from "../logic_newTry/newProjects"
+import { tasks } from "../logic_newTry/newTasks"
 
 import { popUpProject } from "./pop-ups"
 import { popUpTask } from "./pop-ups"
@@ -17,13 +17,20 @@ const projectListContainer = document.createElement('div')
 projectListContainer.classList.add('project-list-container')
 
 const projectListUL = document.createElement('ul')
+
+
 projects.forEach((project)=>{
-    const projectTitle = project.nameProject
-    const projectListLI = document.createElement('li')
-    projectListLI.classList.add('project-list')
-    projectListLI.innerText = projectTitle
-    projectListUL.appendChild(projectListLI)
+    const targetProject = projects.some((existingProject)=>existingProject.nameProject === projects[0])
+    if ( !targetProject ){
+        const projectTitle = project.getProjectName()
+        const projectListLI = document.createElement('li')
+        projectListLI.classList.add('project-list')
+        projectListLI.innerText = projectTitle
+        projectListUL.appendChild(projectListLI)
+        console.table(projects)
+    }
 })
+
 projectListContainer.appendChild(projectListUL)
 aside.appendChild(projectListContainer)
 // ----------------------
@@ -35,19 +42,21 @@ tasksList.classList.add('task-list')
 
 const taskListUL = document.createElement('ul')
 tasks.forEach((task)=>{
-    const taskName = task.titleTask
+    const taskName = task.getName()
     const taskDueDate = task.dueDate
-    const taskPriority = task.priority
+    const taskPriority = task.getPrio()
+    const taskStatus = task.getStatus()
     const taskLi = document.createElement('li')
     taskLi.classList.add('task-Li')
     taskLi.innerHTML = `
     <div class="full-task">
-        <button class="task-x-btn">X</button>
         <div class="task-info">
             <h3>${taskName}</h3>
             <p>Due Date: ${taskDueDate}</p>
+            <p>Status: ${taskStatus}</p>
             <p>Priority: ${taskPriority}</p>
         </div>
+        <button class="task-x-btn">X</button>
     </div>`
     taskListUL.appendChild(taskLi)
 })
