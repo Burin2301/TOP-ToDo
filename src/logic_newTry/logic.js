@@ -39,9 +39,7 @@ popupTaskBtn.addEventListener('click', createTaskPopUp)
 const createProjectBtn = document.querySelector('#addProject')
 createProjectBtn.addEventListener('click', ()=>{
     const projectNameInput = document.querySelector('#projectNameInput').value
-    // projectNameInput = projectNameInput.value
     const projectDescrInput = document.querySelector('#projectDescrInput').value
-    // projectDescrInput = projectDescrInput.value
     newProject(projectNameInput, projectDescrInput)
 })
 

@@ -85,12 +85,5 @@ function newTask(name, dueDate, status, project){
     }
 }
 
-function taskProjectInfo(){
-    let infoNeeded
-    for( let i=0; i<tasks.length ; i++ ){
-        infoNeeded = tasks[i].project
-    }
-    return infoNeeded
-}
 
-export { newTask, tasks, Task, taskProjectInfo }
+export { newTask, tasks, Task }

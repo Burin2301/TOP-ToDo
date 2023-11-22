@@ -1,5 +1,7 @@
 // IMPORTS==================
 
+import { updateProjectsList } from "../UI/body";
+
 
 // NEW PROJECT
 const projects = []
@@ -54,7 +56,7 @@ function newProject(name, descr){
         case projectName != "":
             const newProjectCreated = new Project(projectName, projectDescr)
             projects.push(newProjectCreated)
-            console.table(projects)
+            updateProjectsList()
             break
     }
 }

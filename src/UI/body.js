@@ -18,18 +18,20 @@ projectListContainer.classList.add('project-list-container')
 
 const projectListUL = document.createElement('ul')
 
-
-projects.forEach((project)=>{
-    const targetProject = projects.some((existingProject)=>existingProject.nameProject === projects[0])
-    if ( !targetProject ){
+function updateProjectsList(){
+    projectListUL.innerHTML = ''
+    projects.forEach((project)=>{
         const projectTitle = project.getProjectName()
-        const projectListLI = document.createElement('li')
-        projectListLI.classList.add('project-list')
-        projectListLI.innerText = projectTitle
-        projectListUL.appendChild(projectListLI)
-        console.table(projects)
-    }
-})
+        const newLi = document.createElement('li')
+        newLi.setAttribute('id', projectTitle)
+        newLi.classList.add('project-list')
+        newLi.innerText = projectTitle
+        projectListUL.appendChild(newLi)
+    })
+}
+
+
+updateProjectsList()
 
 projectListContainer.appendChild(projectListUL)
 aside.appendChild(projectListContainer)
@@ -69,4 +71,4 @@ main.appendChild(taskContainer)
 main.appendChild(popUpProject)
 main.appendChild(popUpTask)
 
-export { main }
+export { main, updateProjectsList }
