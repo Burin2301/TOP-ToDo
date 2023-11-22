@@ -31,23 +31,15 @@ const projectTest2 = new Project('Default', 'For testing')
 projects.push(projectTest1)
 projects.push(projectTest2)
 
-function doesProjectExists(a){
-    const lowerCaseName = name.toLowerCase(); // Convertir a minúsculas
-    const projectValues = Object.values(projects).map(value => value.toLowerCase());
-    return projectValues.includes(lowerCaseName);
+function doesProjectExists(name) {
+    let exists = projects.some((project) => project.projectName === name);
+    return exists;
 }
 
 function newProject(name, descr){
-    const doesprojectExists = function(name){
-        const lowerCaseName = name.toLowerCase(); // Convertir a minúsculas
-        const projectValues = Object.values(projects).map(value => value.toLowerCase());
-        return projectValues.includes(lowerCaseName);
-    }
     let projectName = name
     let projectDescr = descr
     let projectExists = doesProjectExists(name)
-    console.log(name)
-    console.log(projects[0])
     console.log(projectExists)
     switch(true){
         case projectName==="":
@@ -66,10 +58,5 @@ function newProject(name, descr){
             break
     }
 }
-
-for(let i = 0;i<projects.length;i++){
-        console.log(typeof(projects[i]))
-}
-
 
 export { newProject, projects }
