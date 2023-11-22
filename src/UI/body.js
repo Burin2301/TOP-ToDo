@@ -32,7 +32,6 @@ function updateProjectsList(){
 
 
 updateProjectsList()
-
 projectListContainer.appendChild(projectListUL)
 aside.appendChild(projectListContainer)
 // ----------------------

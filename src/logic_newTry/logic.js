@@ -1,7 +1,7 @@
 // IMPORTS====
 import { header } from "../UI/header"
 import { main } from "../UI/body"
-import { popUpProject, popUpTask } from "../UI/pop-ups"
+import { popUpProject, popUpTask, updateProjectForTasks } from "../UI/pop-ups"
 import { newProject } from "./newProjects"
 import { newTask } from "./newTasks"
 // SET UI
@@ -12,6 +12,7 @@ function renderScreen(){
     screenContent.appendChild(main)
 }
 renderScreen()
+
 
 // FUNCTION TO CREATE POPUP
 function createProjectPopUp(){
@@ -33,17 +34,21 @@ function createTaskPopUp(){
 const popupProjectBtn = document.querySelector('#ctProjectBtn')
 popupProjectBtn.addEventListener('click', createProjectPopUp)
 const popupTaskBtn = document.querySelector('#ctTaskBtn')
-popupTaskBtn.addEventListener('click', createTaskPopUp)
+popupTaskBtn.addEventListener('click',()=>{
+    createTaskPopUp()
+    updateProjectForTasks()
+} )
 
 // BUTTONS FROM POPUPS TO CREATE STUFF
 const createProjectBtn = document.querySelector('#addProject')
 createProjectBtn.addEventListener('click', ()=>{
-    const projectNameInput = document.querySelector('#projectNameInput').value
-    const projectDescrInput = document.querySelector('#projectDescrInput').value
-    newProject(projectNameInput, projectDescrInput)
+    let projectNameInput = document.querySelector('#projectNameInput').value
+    newProject(projectNameInput)
+    document.querySelector('#projectNameInput').value = ""
 })
 
 const createTaskBtn = document.querySelector('#addTask')
 createTaskBtn.addEventListener('click', newTask)
+
 
 export { renderScreen }

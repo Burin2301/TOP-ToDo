@@ -13,9 +13,6 @@ const projectContent = `
     <label for="projectNameInput">Project Name</label>
     <input id="projectNameInput" type="text" placeholder="Name">
     <br>
-    <label for="projectDescrInput">Project Description</label>
-    <input id="projectDescrInput" type="text" placeholder="Description">
-    <br>
     <button class="add-btn" id="addProject">Add Project</button>
 </div>
 `
@@ -62,15 +59,22 @@ const taskProjectSelect = document.createElement('select')
 taskProjectSelect.setAttribute("name", "taskProjectChoice")
 taskProjectSelect.id = "taskProjectChoice"
 
-projects.forEach((project)=>{
-    const projectTitle = project.getProjectName()
-    const optionProject = document.createElement('option')
-    optionProject.setAttribute("value",projectTitle)
-    optionProject.value = projectTitle
-    optionProject.innerText = projectTitle
-    optionProject.id = projectTitle
-    taskProjectSelect.appendChild(optionProject)
-})
+function updateProjectForTasks(){
+    taskProjectSelect.innerHTML = ""
+    projects.forEach((project)=>{
+        const projectTitle = project.getProjectName()
+        const optionProject = document.createElement('option')
+        optionProject.value = projectTitle
+        optionProject.innerText = projectTitle
+        optionProject.id = projectTitle
+        taskProjectSelect.appendChild(optionProject)
+    })
+}
+
+
+
+
+
 const br = document.createElement('br')
 
 const addTaskBtn = document.createElement('button')
@@ -86,4 +90,4 @@ taskPop.appendChild(addTaskBtn)
 popUpTask.appendChild(taskPop)
 
 
-export { popUpProject, popUpTask }
+export { popUpProject, popUpTask, updateProjectForTasks  }

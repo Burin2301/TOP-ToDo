@@ -7,9 +7,8 @@ import { updateProjectsList } from "../UI/body";
 const projects = []
 
 class Project{
-    constructor(projectName, descr, tasks){
+    constructor(projectName, tasks){
         this.projectName = projectName;
-        this.descr = descr;
         this.tasks = []
     }
     // SETTER METHODS
@@ -38,9 +37,8 @@ function doesProjectExists(name) {
     return exists;
 }
 
-function newProject(name, descr){
+function newProject(name){
     let projectName = name
-    let projectDescr = descr
     let projectExists = doesProjectExists(name)
     console.log(projectExists)
     switch(true){
@@ -54,7 +52,7 @@ function newProject(name, descr){
             break;
         case !projectExists:
         case projectName != "":
-            const newProjectCreated = new Project(projectName, projectDescr)
+            const newProjectCreated = new Project(projectName)
             projects.push(newProjectCreated)
             updateProjectsList()
             break
