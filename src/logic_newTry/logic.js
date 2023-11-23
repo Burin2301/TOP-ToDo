@@ -48,7 +48,12 @@ createProjectBtn.addEventListener('click', ()=>{
 })
 
 const createTaskBtn = document.querySelector('#addTask')
-createTaskBtn.addEventListener('click', newTask)
+createTaskBtn.addEventListener('click', ()=>{
+    let nameOfTask = document.querySelector('#taskNameInput').value
+    let taskDueDate = document.querySelector('#taskDateInput').value
+    let taskProject = document.querySelector('#taskProjectChoice').value
+    newTask(nameOfTask, taskDueDate, taskProject)
+})
 
 
 export { renderScreen }

@@ -1,5 +1,5 @@
 // IMPORTS==================
-
+import { Task, tasks } from '../logic_newTry/newTasks'
 import { updateProjectsList } from "../UI/body";
 
 
@@ -12,8 +12,8 @@ class Project{
         this.tasks = []
     }
     // SETTER METHODS
-    setName(projectName){
-        this.projectName
+    setProjectName(projectName){
+        this.projectName = projectName
     }
     setTasks(tasks){
         this.tasks = tasks
@@ -24,6 +24,11 @@ class Project{
     }
     getTasks(){
         return this.tasks
+    }
+    addTask(newTask){
+        if(!this.tasks.find((task)=>task.taskName === newTask)){
+            this.tasks.push(newTask)
+        }
     }
 }
 

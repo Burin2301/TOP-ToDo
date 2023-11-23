@@ -4,11 +4,11 @@ import { projects } from "./newProjects";
 
 // NEW TASK
 class Task{
-    constructor(taskName, dueDate, status, project, prio, notes){
+    constructor(taskName, dueDate, project, status, prio, notes){
         this.taskName = taskName;
         this.dueDate = dueDate;
-        this.status = status;
         this.project = project;
+        this.status = status;
         this.prio = prio
         this.notes = []
     }
@@ -52,15 +52,14 @@ class Task{
 
 const tasks = []
 
-const task1 = new Task('testing', '12/11/2023','started','Testing','high')
-const task2 = new Task('testing2', '01/23/2024','started','Default','low')
+const task1 = new Task('testing', '12/11/2023','Testing','started','high')
+const task2 = new Task('testing2', '01/23/2024','Default','started','low')
 tasks.push(task1)
 tasks.push(task2)
 
-function newTask(name, dueDate, status, project){
+function newTask(name, dueDate, project){
     let taskName = name
     let taskDueDate = dueDate
-    let taskStatus = status
     let taskProject = project
     let taskExists = compareNewProjectInfo(taskName)
     switch(true){
@@ -68,16 +67,16 @@ function newTask(name, dueDate, status, project){
             alert('This task already exists')
             console.table(tasks)
             break
-        case taskDueDate === '':
-            taskDueDate = isToday
-            console.table(tasks)
-            break
-        case taskProject === '':
-            taskProject = 'Default'
-            console.table(tasks)
-            break
         case !taskExists:
-            const newTaskCreated = new Task(taskName, taskDueDate, taskStatus, taskProject, taskProject)
+            if(taskDueDate === ''){
+                let today = new Date()
+                let todayDays = today.getDate()
+                let todayMonth = today.getMonth()+1
+                let todayYear = today.getFullYear()
+                taskDueDate = `${todayMonth}/${todayDays}/${todayYear}`
+            }
+            if(taskProject === '')taskProject = 'Default'
+            const newTaskCreated = new Task(taskName, taskDueDate, taskProject)
             tasks.push(newTaskCreated)
             console.table(tasks)
             console.table(projects)
@@ -85,5 +84,9 @@ function newTask(name, dueDate, status, project){
     }
 }
 
+function compareNewProjectInfo(a){
+    if(tasks.find((task)=>task.taskName===a))
+    return true
+}
 
 export { newTask, tasks, Task }

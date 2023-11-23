@@ -35,14 +35,6 @@ const taskContent = `
     <br>
     <label for="taskDateInput">Due Date</label>
     <input id="taskDateInput" type="date" placeholder="Due Date">
-    <br>
-    <label for="taskPrioChoice">Priority</label>
-    <select name="taskPrioChoice" id="taskPrioChoice">
-        <option value="low">Low</option>
-        <option value="normal">Normal</option>
-        <option value="high">High</option>
-        <option value="extreme">Asap</option>
-    </select>
     <br>`
 
 taskPop.innerHTML = taskContent
