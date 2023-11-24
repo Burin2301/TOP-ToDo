@@ -63,10 +63,6 @@ function updateProjectForTasks(){
     })
 }
 
-
-
-
-
 const br = document.createElement('br')
 
 const addTaskBtn = document.createElement('button')

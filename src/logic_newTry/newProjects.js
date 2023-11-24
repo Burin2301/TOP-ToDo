@@ -32,8 +32,8 @@ class Project{
     }
 }
 
-const projectTest1 = new Project('Testing', 'For testing')
-const projectTest2 = new Project('Default', 'For testing')
+const projectTest1 = new Project('Default', 'For testing')
+const projectTest2 = new Project('Testing', 'For testing')
 projects.push(projectTest1)
 projects.push(projectTest2)
 
@@ -64,4 +64,4 @@ function newProject(name){
     }
 }
 
-export { newProject, projects }
+export { Project, newProject, projects }

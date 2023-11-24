@@ -1,6 +1,6 @@
 // IMPORTS====
 import { header } from "../UI/header"
-import { main } from "../UI/body"
+import { main, updateTasksLIst } from "../UI/body"
 import { popUpProject, popUpTask, updateProjectForTasks } from "../UI/pop-ups"
 import { newProject } from "./newProjects"
 import { newTask } from "./newTasks"
@@ -53,6 +53,7 @@ createTaskBtn.addEventListener('click', ()=>{
     let taskDueDate = document.querySelector('#taskDateInput').value
     let taskProject = document.querySelector('#taskProjectChoice').value
     newTask(nameOfTask, taskDueDate, taskProject)
+    updateTasksLIst()
 })
 
 

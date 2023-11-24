@@ -23,9 +23,15 @@ function updateProjectsList(){
     projects.forEach((project)=>{
         const projectTitle = project.getProjectName()
         const newLi = document.createElement('li')
-        newLi.setAttribute('id', projectTitle)
+        newLi.id = projectTitle
         newLi.classList.add('project-list')
-        newLi.innerText = projectTitle
+        const liContent =`
+            <div class="project-div">
+                <p>${projectTitle}</p>
+                <button id="${projectTitle}+Delete" class="project-x-btn">X</button>
+            </div>
+            `
+        newLi.innerHTML = liContent
         projectListUL.appendChild(newLi)
     })
 }
@@ -42,25 +48,28 @@ const tasksList = document.createElement('div')
 tasksList.classList.add('task-list')
 
 const taskListUL = document.createElement('ul')
-tasks.forEach((task)=>{
-    const taskName = task.getName()
-    const taskDueDate = task.dueDate
-    const taskPriority = task.getPrio()
-    const taskStatus = task.getStatus()
-    const taskLi = document.createElement('li')
-    taskLi.classList.add('task-Li')
-    taskLi.innerHTML = `
-    <div class="full-task">
-        <div class="task-info">
-            <h3>${taskName}</h3>
-            <p>Due Date: ${taskDueDate}</p>
-            <p>Status: ${taskStatus}</p>
-            <p>Priority: ${taskPriority}</p>
-        </div>
-        <button class="task-x-btn">X</button>
-    </div>`
-    taskListUL.appendChild(taskLi)
-})
+function updateTasksLIst(){
+    taskListUL.innerHTML = ''
+    tasks.forEach((task)=>{
+        const taskName = task.getName()
+        const taskDueDate = task.dueDate
+        const taskLi = document.createElement('li')
+        taskLi.classList.add('task-Li')
+        taskLi.innerHTML = `
+        <div class="full-task">
+            <div class="task-info">
+                <h3>${taskName}</h3>
+                <p>Due Date: ${taskDueDate}</p>
+            </div>
+            <button class="task-x-btn">X</button>
+        </div>`
+        taskListUL.appendChild(taskLi)
+
+        console.table(projects)
+        console.table(tasks)
+    })
+}
+updateTasksLIst()
 tasksList.appendChild(taskListUL)
 taskContainer.appendChild(tasksList)
 // ----------------------
@@ -70,4 +79,4 @@ main.appendChild(taskContainer)
 main.appendChild(popUpProject)
 main.appendChild(popUpTask)
 
-export { main, updateProjectsList }
+export { main, updateProjectsList, updateTasksLIst }
