@@ -64,9 +64,6 @@ function updateTasksLIst(){
             <button class="task-x-btn">X</button>
         </div>`
         taskListUL.appendChild(taskLi)
-
-        console.table(projects)
-        console.table(tasks)
     })
 }
 updateTasksLIst()

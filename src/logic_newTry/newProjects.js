@@ -25,13 +25,6 @@ class Project{
     getTasks(){
         return this.tasks
     }
-    addNewTask(targetTask){
-        projects.forEach((project) => {
-            if(!this.tasks.find((task)=>project.projectName === targetTask.projectName  )){
-                this.tasks.push(targetTask)
-            }
-        });
-    }
 }
 
 const projectTest1 = new Project('Default', 'For testing')
@@ -65,10 +58,15 @@ function newProject(name){
             break
     }
 }
+function addTaskToProject(targetTask){
+    const targetTaskName = targetTask.taskName
+    const taskTargetProject = targetTask.project
+    const targetProject = projects.find((project)=>project.projectName===taskTargetProject)
+    if( targetProject.tasks.find((task)=> task.taskName=== targetTaskName )){
+        console.log('true')
+    }console.log('false')
+    targetProject.tasks.push(targetTask)
+}
 
-projects.forEach((project)=>{
-    project.addNewTask(tasks)
-})
-console.log(projects)
 
-export { Project, newProject, projects }
+export { Project, newProject, projects, addTaskToProject }

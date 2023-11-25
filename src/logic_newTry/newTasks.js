@@ -1,5 +1,5 @@
 // IMPORTS==================
-import { Project, projects } from "./newProjects";
+import { Project, projects, addTaskToProject } from "./newProjects";
 
 // NEW TASK
 class Task{
@@ -40,7 +40,6 @@ class Task{
     getStatus(){
         return this.status
     }
-
     formatDate(){
         const month = this.dueDate.split('/')[0]
         const day = this.dueDate.split('/')[0]
@@ -55,6 +54,13 @@ const task1 = new Task('testing', '12/11/2023','Testing','started','high')
 const task2 = new Task('testing2', '01/23/2024','Default','started','low')
 tasks.push(task1)
 tasks.push(task2)
+
+function tasksToProject(){
+    tasks.forEach((task)=>{
+        addTaskToProject(task)
+    })
+}
+
 
 function newTask(name, dueDate, project){
     let taskName = name
@@ -77,8 +83,8 @@ function newTask(name, dueDate, project){
             if(taskProject === '')taskProject = 'Default'
             const newTaskCreated = new Task(taskName, taskDueDate, taskProject)
             tasks.push(newTaskCreated)
-            console.table(tasks)
-            console.table(projects)
+            tasksToProject()
+
             break
     }
 }
@@ -88,4 +94,4 @@ function compareNewProjectInfo(a){
     return true
 }
 
-export { newTask, tasks, Task }
+export { newTask, tasks, Task, tasksToProject }
