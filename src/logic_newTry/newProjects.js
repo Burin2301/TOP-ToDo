@@ -7,7 +7,7 @@ import { updateProjectsList } from "../UI/body";
 const projects = []
 
 class Project{
-    constructor(projectName, tasks){
+    constructor(projectName){
         this.projectName = projectName;
         this.tasks = []
     }
@@ -25,10 +25,12 @@ class Project{
     getTasks(){
         return this.tasks
     }
-    addTask(newTask){
-        if(!this.tasks.find((task)=>task.taskName === newTask)){
-            this.tasks.push(newTask)
-        }
+    addNewTask(targetTask){
+        projects.forEach((project) => {
+            if(!this.tasks.find((task)=>project.projectName === targetTask.projectName  )){
+                this.tasks.push(targetTask)
+            }
+        });
     }
 }
 
@@ -63,5 +65,10 @@ function newProject(name){
             break
     }
 }
+
+projects.forEach((project)=>{
+    project.addNewTask(tasks)
+})
+console.log(projects)
 
 export { Project, newProject, projects }

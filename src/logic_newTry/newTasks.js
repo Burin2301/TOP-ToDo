@@ -1,6 +1,5 @@
 // IMPORTS==================
-import { isToday } from "date-fns";
-import { projects } from "./newProjects";
+import { Project, projects } from "./newProjects";
 
 // NEW TASK
 class Task{
@@ -19,7 +18,7 @@ class Task{
     setProject(project){
         this.project = project
     }
-    setPrio(prio){
+    setPrio(prio){/*  */
         this.prio = prio
     }
     setStatus(status){

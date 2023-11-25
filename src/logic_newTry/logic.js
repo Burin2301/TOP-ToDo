@@ -2,8 +2,8 @@
 import { header } from "../UI/header"
 import { main, updateTasksLIst } from "../UI/body"
 import { popUpProject, popUpTask, updateProjectForTasks } from "../UI/pop-ups"
-import { newProject } from "./newProjects"
-import { newTask } from "./newTasks"
+import { Project,newProject, projects } from "./newProjects"
+import { Task, newTask, tasks } from "./newTasks"
 // SET UI
 
 const screenContent = document.querySelector('.content')
@@ -12,6 +12,7 @@ function renderScreen(){
     screenContent.appendChild(main)
 }
 renderScreen()
+
 
 
 // FUNCTION TO CREATE POPUP
