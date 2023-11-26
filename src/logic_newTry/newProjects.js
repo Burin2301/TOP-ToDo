@@ -1,5 +1,5 @@
 // IMPORTS==================
-import { Task, tasks } from '../logic_newTry/newTasks'
+import { Task, tasks, tasksToProject } from '../logic_newTry/newTasks'
 import { updateProjectsList } from "../UI/body";
 
 
@@ -59,13 +59,19 @@ function newProject(name){
     }
 }
 function addTaskToProject(targetTask){
-    const targetTaskName = targetTask.taskName
     const taskTargetProject = targetTask.project
     const targetProject = projects.find((project)=>project.projectName===taskTargetProject)
-    if( targetProject.tasks.find((task)=> task.taskName=== targetTaskName )){
-        console.log('true')
-    }console.log('false')
-    targetProject.tasks.push(targetTask)
+
+    let taskExists = false;
+    targetProject.tasks.forEach((task) => {
+        if (task.taskName === targetTask.taskName) {
+            taskExists = true;
+        }
+    });
+    if (!taskExists) {
+        targetProject.tasks.push(targetTask);
+    }
+    console.log(projects)
 }
 
 

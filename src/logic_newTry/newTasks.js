@@ -83,6 +83,7 @@ function newTask(name, dueDate, project){
             if(taskProject === '')taskProject = 'Default'
             const newTaskCreated = new Task(taskName, taskDueDate, taskProject)
             tasks.push(newTaskCreated)
+
             tasksToProject()
 
             break
