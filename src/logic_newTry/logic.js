@@ -12,6 +12,7 @@ function renderScreen(){
     screenContent.appendChild(main)
 }
 renderScreen()
+tasksToProject()
 
 // FUNCTION TO CREATE POPUP
 function createProjectPopUp(){

@@ -71,7 +71,6 @@ function addTaskToProject(targetTask){
     if (!taskExists) {
         targetProject.tasks.push(targetTask);
     }
-    console.log(projects)
 }
 
 
