@@ -1,6 +1,7 @@
-// IMPORTS
+// IMPORTS------------
 import { Project } from "./newProjects"
 import { Task } from "./newTasks"
+// -------------------
 
 class ToDoList{
     constructor(){
@@ -19,5 +20,6 @@ class ToDoList{
         return this.toDoProjects
     }
 }
+
 
 export { ToDoList }

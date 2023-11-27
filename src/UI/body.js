@@ -22,13 +22,15 @@ function updateProjectsList(){
     projectListUL.innerHTML = ''
     projects.forEach((project)=>{
         const projectTitle = project.getProjectName()
+        const projectIndex = project.getIndex()
         const newLi = document.createElement('li')
         newLi.id = projectTitle
         newLi.classList.add('project-list')
+        newLi.setAttribute('data-index',`project${projectIndex}`)
         const liContent =`
             <div class="project-div">
                 <p>${projectTitle}</p>
-                <button id="${projectTitle}+Delete" class="project-x-btn">X</button>
+                <button id="${projectTitle}Delete" class="project-x-btn">X</button>
             </div>
             `
         newLi.innerHTML = liContent

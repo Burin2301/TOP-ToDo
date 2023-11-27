@@ -7,8 +7,9 @@ import { updateProjectsList } from "../UI/body";
 const projects = []
 
 class Project{
-    constructor(projectName){
+    constructor(projectName, index){
         this.projectName = projectName;
+        this.index = index
         this.tasks = []
     }
     // SETTER METHODS
@@ -25,10 +26,13 @@ class Project{
     getTasks(){
         return this.tasks
     }
+    getIndex(){
+        return this.index
+    }
 }
 
-const projectTest1 = new Project('Default', 'For testing')
-const projectTest2 = new Project('Testing', 'For testing')
+const projectTest1 = new Project('Default', 1)
+const projectTest2 = new Project('Testing', 2)
 projects.push(projectTest1)
 projects.push(projectTest2)
 
@@ -38,23 +42,23 @@ function doesProjectExists(name) {
 }
 
 function newProject(name){
+    let projectIndex = projects.length+1
     let projectName = name
     let projectExists = doesProjectExists(name)
     console.log(projectExists)
     switch(true){
         case projectName==="":
             alert('Please, type a name for the project')
-            console.table(projects)
             break;
         case projectExists:
             alert('This project already exists')
-            console.table(projects)
             break;
         case !projectExists:
         case projectName != "":
-            const newProjectCreated = new Project(projectName)
+            const newProjectCreated = new Project(projectName, projectIndex)
             projects.push(newProjectCreated)
             updateProjectsList()
+            console.table(projects)
             break
     }
 }
