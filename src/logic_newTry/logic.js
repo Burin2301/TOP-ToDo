@@ -56,22 +56,9 @@ createTaskBtn.addEventListener('click', ()=>{
     updateTasksLIst()
 })
 
-// DELETE BUTTONS FOR TASKS, PROJECTS
-const deleteProjectBtn = document.querySelectorAll('.project-x-btn')
-deleteProjectBtn.forEach((btn)=>{
-    btn.addEventListener('click', (e)=>{
-        console.log(e.target)
-    })
-})
 
-const deleteTaskBtn = document.querySelectorAll('.task-x-btn')
-deleteTaskBtn.forEach((btn)=>{
-    btn.addEventListener('click', (e)=>{
-        // const getDiv = document.querySelector()
-        console.log(e.target)
-    })
-})
 
+// TO REMOVE PROJECTS AND TASK FROM DOM AN THEIR ARRAYS
 function deleteElement(objRemDom, objRemArray, array){
     objRemDom.remove()
     array.splice(objRemArray,1)
@@ -79,6 +66,5 @@ function deleteElement(objRemDom, objRemArray, array){
 
 
 
-// deleteTaskBtn.addEventListener('click',)
 
 export { renderScreen }

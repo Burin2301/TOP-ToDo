@@ -25,8 +25,9 @@ function updateProjectsList(){
         const projectIndex = project.getIndex()
         const newLi = document.createElement('li')
         newLi.id = projectTitle
-        newLi.classList.add('project-list')
-        newLi.setAttribute('data-index',`project${projectIndex}`)
+        newLi.classList.add(`project-list`)
+        newLi.classList.add(`project${projectIndex}`)
+        newLi.setAttribute('data-index',`${projectIndex}`)
         const liContent =`
             <div class="project-div">
                 <p>${projectTitle}</p>
